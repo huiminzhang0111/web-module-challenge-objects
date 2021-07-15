@@ -15,8 +15,9 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
+function createMenuItem(name, price, category){
     /*Your code here*/
+    return {name:name , price: price, category: category};
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -28,6 +29,9 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
+console.log(createMenuItem('burger', 10, 'lunch'));
+console.log(createMenuItem('noodle', 15, 'dinner'));
+console.log(createMenuItem('pizza', 5, 'lunch'));
 
 
 
@@ -47,9 +51,17 @@ const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  
+  discount: function(id){
+    let price;
+    if(id === 'teacher' || id === 'student'){
+      price = this.price * 0.75;
+    }
+    else if(id === 'public'){
+      price = this.price * 0.9;
+    }
+    return price
+  }
 }
-
 
 
 ///////////////Reviews (MVP)///////////////////
@@ -69,7 +81,8 @@ Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
 
-
+let result = reviews.find(o => o.name === 'Julius');
+console.log(result.feedback);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -92,8 +105,12 @@ Write a function that creates an object with name, rating, feedback, add the new
   4. should return the resulting array
 */
 
-function addReview(/*Your Code Here */){
+function addReview(reviews, name, rating, feedback){
   /*Your Code Here */
+  const review = {name: name, rating: rating, feedback: feedback};
+  reviews.push(review);
+
+  return reviews;
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -107,8 +124,9 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
+function getReviewByIndex(reviews, DesiredIndex) {
   /*Your code here*/
+  return reviews[DesiredIndex].name + ' gave the restaurant a ' + reviews[DesiredIndex].rating + ' star review, and their feedback was: ' + reviews[DesiredIndex].feedback;
 }
 
 
